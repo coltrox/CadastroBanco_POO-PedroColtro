@@ -1,99 +1,70 @@
-# Sistema de Cadastro Bancário com POO e GUI
+# 📘 Sistema de Cadastro Bancário (POO + Java Swing)
 
-> Projeto acadêmico para a disciplina de Desenvolvimento de Sistemas, com o objetivo de aplicar na prática os conceitos fundamentais da Programação Orientada a Objetos (POO) através da construção de uma aplicação de desktop com interface gráfica em Java Swing.
+Projeto acadêmico para a disciplina de Desenvolvimento de Sistemas, com o objetivo de aplicar os conceitos de **Programação Orientada a Objetos (POO)** e a arquitetura **MVC (Model-View-Controller)** na construção de uma aplicação desktop com **interface gráfica em Java Swing**.
+
+---
 
 ## 📜 Descrição
 
-Este projeto é uma aplicação de desktop que simula um formulário de cadastro para contas bancárias. A interface gráfica, desenvolvida com Java Swing, permite a inserção de dados do cliente e da conta, além de simular ações como consultar e atualizar registros.
+Este projeto é uma aplicação de desktop que simula um **formulário de cadastro bancário**.
+A interface gráfica, feita em **Java Swing**, permite inserir e atualizar dados de clientes e suas contas, além de simular uma consulta de cliente já existente.
 
-O principal foco do projeto não é a persistência de dados, mas sim a correta estruturação do código utilizando a arquitetura **MVC (Model-View-Controller)** e os pilares da POO.
+⚠️ O foco do projeto **não é salvar dados em banco de dados**, mas sim mostrar como organizar o código com POO e MVC.
+
+---
 
 ## ✨ Funcionalidades
 
-  * **Interface gráfica intuitiva** para cadastro de clientes e suas respectivas contas.
-  * Campos para dados da conta (Agência, Número da Conta) e dados pessoais do cliente (Nome, Endereço, Telefone, CPF).
-  * Seleção de tipo de conta entre **Conta Corrente** e **Conta Poupança**.
-  * Simulação de **consulta** a um cliente existente, preenchendo o formulário com dados de exemplo.
-  * Lógica inteligente para diferenciar a **gravação de um novo cliente** da **edição** de um cliente que foi consultado.
-  * Feedback ao usuário através de caixas de diálogo para confirmar as ações.
+* Interface gráfica simples e intuitiva para cadastro de clientes.
+* Campos para dados pessoais (**Nome, Endereço, Telefone, CPF**).
+* Seleção de tipo de conta (**Conta Corrente ou Conta Poupança**).
+* Botão **Consultar** que preenche o formulário com dados de exemplo.
+* Botão **Atualizar** que grava um novo cliente ou edita um já existente.
+* Botão **Fechar** que encerra a aplicação.
+* Mensagens de confirmação exibidas em caixas de diálogo.
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
-  * **Java:** Linguagem de programação principal.
-  * **Java Swing:** Biblioteca para a construção da interface gráfica de usuário (GUI).
+* **Java**: Linguagem principal.
+* **Java Swing**: Biblioteca para criação da interface gráfica (GUI).
+
+---
 
 ## 🧠 Conceitos Aplicados
 
-Este projeto foi uma oportunidade para aplicar e solidificar os seguintes conceitos:
+### Programação Orientada a Objetos (POO)
 
-  * **Programação Orientada a Objetos (POO):**
-      * **Encapsulamento:** Proteção dos atributos das classes, que são acessados apenas por meio de getters e setters.
-      * **Herança:** Reutilização de código com as classes `Cliente` herdando de `Pessoa`, e `ContaCorrente`/`ContaPoupanca` herdando de `Conta`.
-      * **Polimorfismo:** Comportamentos diferentes para métodos com a mesma assinatura, como no método `getTipoConta()`.
-      * **Abstração:** Uso de classes abstratas (`Pessoa`, `Conta`) para modelar conceitos genéricos.
-  * **Arquitetura MVC (Model-View-Controller):**
-      * **Model:** Camada de dados e regras de negócio (pacote `com.cadastrobancario.model`).
-      * **View:** Camada de apresentação e interação com o usuário (pacote `com.cadastrobancario.view`).
-      * **Controller:** Camada que orquestra a comunicação entre o Model e a View (pacote `com.cadastrobancario.controller`).
+* **Encapsulamento** → atributos protegidos e acessados apenas por getters e setters.
+* **Herança** → `Cliente` herda de `Pessoa`, `ContaCorrente` e `ContaPoupanca` herdam de `Conta`.
+* **Polimorfismo** → método `getTipoConta()` se comporta de forma diferente em cada tipo de conta.
+* **Abstração** → classes `Pessoa` e `Conta` são abstratas, servindo como molde.
 
-## 🚀 Como Executar o Projeto
+### Arquitetura MVC
 
-**Pré-requisitos:**
+* **Model** → classes que representam os dados (Pessoa, Cliente, Conta...).
+* **View** → tela gráfica para interação do usuário (`TelaCadastro`).
+* **Controller** → faz a ponte entre os dados e a interface (`CadastroController`).
 
-  * Ter o **JDK (Java Development Kit)** versão 8 ou superior instalado e configurado no seu sistema.
-
-**Passos para execução via terminal:**
-
-1.  Clone este repositório para a sua máquina local:
-
-    ```bash
-    git clone https://github.com/SEU-USUARIO/CadastroBanco_POO.git
-    ```
-
-2.  Navegue até a pasta `src` do projeto:
-
-    ```bash
-    cd CadastroBanco_POO/src
-    ```
-
-3.  Compile todos os arquivos `.java`:
-
-    ```bash
-    javac com/cadastrobancario/**/*.java
-    ```
-
-4.  Execute a classe principal `App.java`:
-
-    ```bash
-    java com.cadastrobancario.App
-    ```
-
-A janela da aplicação deverá ser exibida no centro da tela.
+---
 
 ## 📂 Estrutura de Arquivos
 
-O projeto está organizado da seguinte forma para garantir a separação de responsabilidades:
-
-```text
+```bash
 CadastroBanco_POO/
-└── src/
-    └── com/
-        └── cadastrobancario/
-            ├── App.java                 # Ponto de entrada da aplicação
-            ├── controller/
-            │   └── CadastroController.java  # Lógica de controle
-            ├── model/
-            │   ├── Cliente.java
-            │   ├── Conta.java
-            │   ├── ContaCorrente.java
-            │   ├── ContaPoupanca.java
-            │   └── Pessoa.java
-            └── view/
-                └── TelaCadastro.java      # Interface gráfica
+├── src/
+│   ├── App.java              # Classe principal (inicia a aplicação)
+│   ├── CadastroController.java # Controla as ações da tela
+│   ├── TelaCadastro.java     # Interface gráfica
+│   ├── Pessoa.java           # Classe abstrata base
+│   ├── Cliente.java          # Representa o cliente
+│   ├── Conta.java            # Classe abstrata base de conta
+│   ├── ContaCorrente.java    # Conta Corrente
+│   └── ContaPoupanca.java    # Conta Poupança
+└── bin/                      # Arquivos compilados (.class)
 ```
 
------
+---
 
-**👨‍💻 Autor**
-
-  * Pedro Coltro
+👉 Quer que eu deixe esse README em **versão enxuta** (com menos teoria e mais prática) pra parecer mais “feito por aluno”, ou prefere deixar completinho e formal desse jeito?
